@@ -5,14 +5,14 @@ class UrbanRoutesPageLocators:
     from_field = (By.ID, 'from')
     to_field = (By.ID, 'to')
     #Prueba 2. Localizadores para Seleccionar la tarifa Comfort.
-    order_taxi_button = (By.XPATH, '//*[@id="root"]/div/div[3]/div[3]/div[1]/div[3]/div[1]/button')
+    order_taxi_button = (By.XPATH, '//*[text()="Pedir un taxi"]')
     comfort_tariff_button = (By.CLASS_NAME, 'tcard')
     #Prueba 3.Localizadores para Rellenar el número de teléfono.
-    telephone_number = (By.CLASS_NAME, "np-button")
-    phone_input = (By.ID, 'phone')
-    next_button = (By.XPATH, '//*[@id="root"]/div/div[1]/div[2]/div[1]/form/div[2]/button')
-    code_field = (By.ID, 'code')
-    code_confirmation_button = (By.XPATH, '//*[@id="root"]/div/div[1]/div[2]/div[2]/form/div[2]/button[1]')
+    telephone = (By.CLASS_NAME, "np-button")
+    phone = (By.ID, 'phone')
+    button_phone = (By.XPATH, '//*[text()="Siguiente"]')
+    code = (By.ID, 'code')
+    code_confirmation_ = (By.XPATH, '//*[text()="Confirmar"]')
     # Prueba 4.Localizadores para Agregar una tarjeta de crédito.
     payment_method = (By.CLASS_NAME, "pp-button")
     add_card = (By.XPATH, '//*[@id="root"]/div/div[2]/div[2]/div[1]/div[2]/div[3]/div[3]/div/img')
@@ -32,6 +32,7 @@ class UrbanRoutesPageLocators:
     # Prueba 8.Localizadores para Aparece el modal para buscar un taxi.
     order_a_taxi = (By.CLASS_NAME, "smart-button-wrapper")
     modal_opcional = (By.XPATH,'//*[@id="root"]/div/div[5]/div[2]/div[2]/div[1]')
-    # Prueba 9.Localizadores para Aparecerá el modal de búsqueda de conductor  y habrá una cuenta regresiva mientras se asigna un conductor
-    laboral_tariff_button = (By.CLASS_NAME, "tcard-icon")
-    search_driver= (By.XPATH, '//*[@id="root"]/div/div[5]/div[2]')
+    # Prueba 9.Localizadores para Busqueda de conductor.
+    driver_information = (By.CSS_SELECTOR, '[style="cursor: default;"]')
+    car_draw = (By.CSS_SELECTOR, '[alt="Car"]')
+

@@ -1,5 +1,6 @@
 from selenium.webdriver import Keys
 import data
+import time
 import UrbanRoutesPageLocators as URP
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions
@@ -33,19 +34,19 @@ class UrbanRoutesPageMethods:
 
     # Metodos para la prueba 3
     def click_phone_number_field(self):
-        self.driver.find_element(*self.URP.telephone_number).click()
+        self.driver.find_element(*self.URP.telephone).click()
 
     def fill_in_phone_number(self):
-        self.driver.find_element(*self.URP.phone_input).send_keys(data.phone_number)
+        self.driver.find_element(*self.URP.phone).send_keys(data.phone_number)
 
     def click_next_button(self):
-        self.driver.find_element(*self.URP.next_button).click()
+        self.driver.find_element(*self.URP.button_phone).click()
 
     def set_confirmation_code(self, code):
-        self.driver.find_element(*self.URP.code_field).send_keys(code)
+        self.driver.find_element(*self.URP.code).send_keys(code)
 
     def click_code_confirmation_button(self):
-        self.driver.find_element(*self.URP.code_confirmation_button).click()
+        self.driver.find_element(*self.URP.code_confirmation_).click()
 
     # Metodos para la prueba 4
     def click_payment_method_field(self):
@@ -93,10 +94,6 @@ class UrbanRoutesPageMethods:
         self.driver.find_element(*self.URP.modal_opcional)
 
     # Metodos para la prueba 9
-    def click_laboral_tariff_button(self):
-        tariff2 = self.driver.find_elements(*self.URP.laboral_tariff_button)
-        tariff2[0].click()
-
-    def wait_search_driver_opcional_modal(self):
-        WebDriverWait(self.driver, 50).until(expected_conditions.element_to_be_selected(self.URP.search_driver))
-        self.driver.find_elements(*self.URP.search_driver)
+    def driver_information(self):
+        self.driver.find_element(*self.URP.driver_information)
+        self.driver.find_element(*self.URP.car_draw)

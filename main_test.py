@@ -4,7 +4,7 @@ from selenium.webdriver.chrome.options import Options
 import phone_code
 import UrbanRoutesPageLocators as URP
 import urban_routes_page_methods as UrbanM
-
+import time
 
 class TestUrbanRoutes:
     driver = None
@@ -41,8 +41,7 @@ class TestUrbanRoutes:
         self.routes.click_next_button()
         self.routes.set_confirmation_code(phone_code.retrieve_phone_code(self.driver))
         self.routes.click_code_confirmation_button()
-        phone_value = self.driver.find_element(*self.URP.phone_input).get_attribute("value")
-        assert phone_value == data.phone_number
+        assert self.driver.find_element(*self.URP.phone).get_attribute("value") == data.phone_number
 
         # 4. Agregar una tarjeta de crédito.
     def test_add_credit_card4(self):
@@ -57,7 +56,6 @@ class TestUrbanRoutes:
 
         # 5. Escribir un mensaje para el controlador.
     def test_write_message5(self):
-        self.routes.click_order_taxi_button()
         self.routes.enter_new_message()
         assert self.driver.find_element(*self.URP.message).get_property('value') == data.message_for_driver
 
@@ -81,11 +79,10 @@ class TestUrbanRoutes:
 
         # 9. Busqueda de conductor.
     def test_search_information_optional_modal9(self):
-        self.routes.click_laboral_tariff_button()
-        self.routes.click_order_a_taxi()
-        self.routes.wait_opcional_modal()
-        modal = self.routes.wait_search_driver_opcional_modal()
-        assert modal.is_selected() == True
+        time.sleep(35)
+        assert self.driver.find_element(*self.URP.modal_opcional).is_displayed()
+        assert self.driver.find_element(*self.URP.driver_information).is_displayed()
+        assert self.driver.find_element(*self.URP.car_draw).is_displayed()
 
     @classmethod
     def teardown_class(cls):
